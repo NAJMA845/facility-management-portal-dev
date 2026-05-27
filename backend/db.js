@@ -1,20 +1,42 @@
 const fs = require('fs');
 const path = require('path');
-const { Low } = require('lowdb');
-const { JSONFile } = require('lowdb/node');
 const bcrypt = require('bcryptjs');
 
-const dataDir = path.join(__dirname, 'data');
+const isVercel = process.env.VERCEL === '1';
+const dataDir = isVercel ? '/tmp' : path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
 const DB_FILE = path.join(dataDir, 'db.json');
-const adapter = new JSONFile(DB_FILE);
-const defaultData = { users: [], assets: [], work_orders: [], tenant_requests: [], revenue_entries: [] };
-const db = new Low(adapter, defaultData);
+const seedFile = path.join(__dirname, 'data', 'db.json');
+
+if (isVercel && !fs.existsSync(DB_FILE) && fs.existsSync(seedFile)) {
+  fs.copyFileSync(seedFile, DB_FILE);
+}
+
+const createDefaultData = () => ({ users: [], assets: [], work_orders: [], tenant_requests: [], revenue_entries: [] });
+const db = {
+  data: createDefaultData(),
+  async read() {
+    try {
+      const raw = await fs.promises.readFile(DB_FILE, 'utf8');
+      this.data = raw ? JSON.parse(raw) : createDefaultData();
+    } catch (err) {
+      if (err.code === 'ENOENT') {
+        this.data = createDefaultData();
+        await this.write();
+      } else {
+        throw err;
+      }
+    }
+  },
+  async write() {
+    await fs.promises.writeFile(DB_FILE, JSON.stringify(this.data, null, 2));
+  }
+};
 
 async function init() {
   await db.read();
-  const d = db.data || defaultData;
+  const d = db.data || createDefaultData();
   let changed = !db.data;
 
   if (!Array.isArray(d.users)) {
