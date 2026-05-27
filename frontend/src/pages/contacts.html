@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Contacts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Contact Messages</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                <div class="card data-management-card">
+                    <div class="table-control-header-row">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="Search contacts..." class="search-bar-field" id="searchInput">
+                            <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="filter-bar" id="filterBar">
+                        <button class="filter-badge active" data-filter="all">All</button>
+                        <button class="filter-badge" data-filter="New">New</button>
+                        <button class="filter-badge" data-filter="In Review">In Review</button>
+                        <button class="filter-badge" data-filter="Resolved">Resolved</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="management-grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactsTableBody">
+                                <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Contact Details Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Message Details</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="contactDetails"></div>
+                <form id="contactStatusForm" style="margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="contactStatus">Update Status</label>
+                        <select id="contactStatus" name="status">
+                            <option value="New">New</option>
+                            <option value="In Review">In Review</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Close</button>
+                <button class="btn-submit" id="updateStatusBtn">Update Status</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/contacts-page.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+</body>
+</html>

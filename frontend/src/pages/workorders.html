@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Work Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Work Orders</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                <div class="card data-management-card">
+                    <div class="table-control-header-row">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="Search work orders..." class="search-bar-field" id="searchInput">
+                            <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                        </div>
+                        <button class="primary-action-btn" id="addWorkOrderBtn"><i class="fa-solid fa-plus"></i> Add Work Order</button>
+                    </div>
+
+                    <div class="filter-bar" id="filterBar">
+                        <button class="filter-badge active" data-filter="all">All</button>
+                        <button class="filter-badge" data-filter="Open">Open</button>
+                        <button class="filter-badge" data-filter="In Progress">In Progress</button>
+                        <button class="filter-badge" data-filter="Completed">Completed</button>
+                        <button class="filter-badge" data-filter="Closed">Closed</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="management-grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Assigned To</th>
+                                    <th>Created Date</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="workOrdersTableBody">
+                                <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Work Order Modal -->
+    <div id="workOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add Work Order</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="workOrderForm">
+                    <div class="form-group">
+                        <label for="woTitle">Title *</label>
+                        <input type="text" id="woTitle" name="title" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="woDescription">Description</label>
+                        <textarea id="woDescription" name="description"></textarea>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="woPriority">Priority *</label>
+                        <select id="woPriority" name="priority" required>
+                            <option value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="woStatus">Status</label>
+                        <select id="woStatus" name="status">
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group technician-only-field">
+                        <label for="woRemarks">Remarks</label>
+                        <textarea id="woRemarks" name="remarks" placeholder="Add technician remarks"></textarea>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group technician-only-field">
+                        <label for="woCompletionDetails">Completion Details</label>
+                        <textarea id="woCompletionDetails" name="completion_details" placeholder="Add completion details"></textarea>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group manager-only-field">
+                        <label for="woAssignedTo">Assigned To</label>
+                        <select id="woAssignedTo" name="assigned_to">
+                            <option value="">Select Technician</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-submit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/workorders-page.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+</body>
+</html>

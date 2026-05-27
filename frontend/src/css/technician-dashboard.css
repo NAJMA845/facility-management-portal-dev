@@ -1,0 +1,353 @@
+/* technician dashboard page styles */
+/* --- Global Reset Structural Matrix --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* --- Control Side-Panel Navigation Bar --- */
+.sidebar {
+    width: 240px;
+    background-color: #2b3a4a; /* Muted corporate blue slate color signature */
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.brand-icon {
+    color: #3b82f6;
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.menu-item i {
+    width: 18px;
+    font-size: 1rem;
+}
+
+.menu-item:hover {
+    background-color: #344659;
+    color: #ffffff;
+}
+
+.menu-item.active {
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0 8px 8px 0;
+    margin-right: 12px;
+}
+
+.sidebar-footer {
+    padding: 15px 0;
+}
+
+/* --- Application Core Workspace Layout Panels --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.top-navbar {
+    height: 65px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    flex-shrink: 0;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hamburger-btn, .icon-notification-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.page-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    font-size: 0.85rem;
+}
+
+.user-role {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.dropdown-arrow {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* --- Core Viewport Window Canvas --- */
+.dashboard-viewport {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Reusable UI Elements Styles Matrix --- */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.card-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.mb-16 { margin-bottom: 16px; }
+
+/* --- Row Block 1: Focus Metric Panels Grid --- */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.card-label {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Overdue Context Accent State Modifiers */
+.metric-card.alert-highlight {
+    background-color: #fff5f5;
+    border-color: #fee2e2;
+    cursor: pointer;
+}
+
+.label-red { color: #e11d48; }
+.value-red { color: #e11d48; }
+
+.dynamic-arrow-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: #f43f5e;
+}
+
+/* --- Row Block 2: Complete-Width Structured Layout --- */
+.full-row { width: 100%; }
+.table-container-card { min-height: 250px; }
+
+/* --- Row Block 3: Equal Width Split Matrix Column --- */
+.split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.monitoring-card { min-height: 200px; }
+
+/* --- Data Grid Component Engine (Tables) --- */
+.table-responsive { width: 100%; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    text-align: left;
+}
+
+th {
+    color: #64748b;
+    font-weight: 500;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+td {
+    padding: 12px 0;
+    color: #475569;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+tr:last-child td { border-bottom: none; }
+
+.semi-bold-text {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.text-slate { color: #475569; }
+.text-right { text-align: right; }
+.label-muted { color: #94a3b8; font-size: 0.82rem; }
+.view-all-link { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; text-decoration: none; }
+
+/* Status Labels Components badges */
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.badge-progress { background-color: #eff6ff; color: #1e40af; }
+.badge-pending { background-color: #fef3c7; color: #92400e; }
+.badge-completed { background-color: #ecfdf5; color: #065f46; }
+
+/* --- Complex Machine Stack List Components --- */
+.alerts-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+}
+
+.alert-left-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.alert-badge-box {
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.alert-details h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.alert-details p {
+    font-size: 0.78rem;
+    color: #64748b;
+}
+
+.status-marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1.5px #ef4444; /* Geometric target ring alert visualization overlay */
+}
+
+.status-marker-dot.red-dot {
+    background-color: #ef4444;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/src/css/super-admin.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-building-shield brand-icon"></i>
+                <span>Facility Pro</span>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="/src/pages/super-admin.html" class="menu-item active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="/src/pages/user-management.html" class="menu-item"><i class="fa-solid fa-users"></i> User Management</a>
+                <a href="/src/pages/workorders.html" class="menu-item"><i class="fa-regular fa-clipboard"></i> Work Orders</a>
+                <a href="/src/pages/tenants.html" class="menu-item"><i class="fa-solid fa-house-chimney"></i> Tenants</a>
+                <a href="/src/pages/assets.html" class="menu-item"><i class="fa-solid fa-shield-halved"></i> Assets</a>
+                <a href="/src/pages/machines.html" class="menu-item"><i class="fa-solid fa-gears"></i> Machines</a>
+                <a href="/src/pages/revenue.html" class="menu-item"><i class="fa-solid fa-lock"></i> Revenue</a>
+                <a href="/src/pages/user-management.html" class="menu-item"><i class="fa-solid fa-address-book"></i> Contacts</a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="/src/pages/user-management.html" class="menu-item"><i class="fa-solid fa-gear"></i> Settings</a>
+                <a href="/src/pages/user-management.html" class="menu-item"><i class="fa-regular fa-user"></i> Profile</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="/public/login.html" class="menu-item logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                
+                <section class="metrics-row">
+                    <div class="card metric-card">
+                        <span class="card-label">Total Users</span>
+                        <div class="metric-value">120</div>
+                        <div class="trend up"><i class="fa-solid fa-circle"></i> +12 this month</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">Work Orders</span>
+                        <div class="metric-value">320</div>
+                        <div class="trend up"><i class="fa-solid fa-circle"></i> +16 this month</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">Revenue</span>
+                        <div class="metric-value">$45,231</div>
+                        <div class="trend up"><i class="fa-solid fa-circle"></i> +8.0% this month</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">Machines</span>
+                        <div class="metric-value">58</div>
+                        <div class="trend up"><i class="fa-solid fa-circle"></i> +5 this month</div>
+                    </div>
+                </section>
+
+                <section class="charts-row">
+                    <div class="card chart-card-half">
+                        <h3 class="card-title">Work Order Status</h3>
+                        <div class="chart-box doughnut-layout">
+                            <div class="canvas-wrapper">
+                                <canvas id="workOrderStatusChart"></canvas>
+                            </div>
+                            <div id="workOrderLegend" class="custom-legend"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card chart-card-half">
+                        <div class="card-header-inline">
+                            <h3 class="card-title">Revenue Overview</h3>
+                            <select class="dropdown-filter">
+                                <option>This Month</option>
+                            </select>
+                        </div>
+                        <div class="chart-box">
+                            <canvas id="revenueOverviewChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="data-row">
+                    <div class="card table-card">
+                        <div class="card-header-inline">
+                            <h3 class="card-title">Recent Work Orders</h3>
+                            <a href="/src/pages/workorders.html" class="view-all-link">View All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Status</th>
+                                        <th>Priority</th>
+                                        <th>Assigned To</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>WO-1001</td>
+                                        <td>AC Repair</td>
+                                        <td><span class="badge badge-progress">In Progress</span></td>
+                                        <td>High</td>
+                                        <td>John Doe</td>
+                                        <td>May 23, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WO-1002</td>
+                                        <td>Plumbing Issue</td>
+                                        <td><span class="badge badge-pending">Pending</span></td>
+                                        <td>Medium</td>
+                                        <td>Mike Smith</td>
+                                        <td>May 23, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WO-1003</td>
+                                        <td>Lighting Fix</td>
+                                        <td><span class="badge badge-completed">Completed</span></td>
+                                        <td>Low</td>
+                                        <td>Sarah Wilson</td>
+                                        <td>May 23, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WO-1004</td>
+                                        <td>Generator Check</td>
+                                        <td><span class="badge badge-progress">In Progress</span></td>
+                                        <td>High</td>
+                                        <td>David Brown</td>
+                                        <td>May 21, 2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card machine-card">
+                        <div class="card-header-inline">
+                            <h3 class="card-title">Machine Status</h3>
+                            <a href="/src/pages/machines.html" class="view-all-link">View All</a>
+                        </div>
+                        <div class="chart-box doughnut-layout">
+                            <div class="canvas-wrapper donut-center-wrapper">
+                                <canvas id="machineStatusChart"></canvas>
+                                <div class="donut-center-text">
+                                    <span class="donut-num">58</span>
+                                    <span class="donut-lbl">Total</span>
+                                </div>
+                            </div>
+                            <div id="machineLegend" class="custom-legend"></div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+    <script src="/src/js/super-admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* manager dashboard page styles */
+/* --- Global Base Styles and Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* --- Left Application Sidebar Panel --- */
+.sidebar {
+    width: 240px;
+    background-color: #2b3a4a; /* Dark slate gray matching context scheme */
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.brand-icon {
+    color: #3b82f6;
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.menu-item i {
+    width: 18px;
+    font-size: 1rem;
+}
+
+.menu-item:hover {
+    background-color: #344659;
+    color: #ffffff;
+}
+
+.menu-item.active {
+    background-color: #1d4ed8; /* Signature Active Highlight Blue */
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0 8px 8px 0;
+    margin-right: 12px;
+}
+
+.sidebar-footer {
+    padding: 15px 0;
+}
+
+/* --- Main Content Shell Grid --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.top-navbar {
+    height: 65px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    flex-shrink: 0;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hamburger-btn, .icon-notification-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.page-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    font-size: 0.85rem;
+}
+
+.user-role {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.dropdown-arrow {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* --- Scrolling Main Canvas Viewport --- */
+.dashboard-viewport {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Core Card Design Layout Layout --- */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.card-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.mb-12 { margin-bottom: 12px; }
+.mb-20 { margin-bottom: 20px; }
+
+/* --- Row 1 Block Matrix: KPI Panels --- */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-label {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* --- Split Container Structural Row Grid --- */
+.split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.complex-card {
+    min-height: 250px;
+}
+
+/* --- Task Progress Bar Indicators --- */
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.progress-item-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.progress-name { color: #334155; }
+.progress-percentage { color: #0f172a; font-weight: 600; }
+
+progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #f1f5f9;
+}
+
+progress::-webkit-progress-value {
+    background-color: #1d4ed8;
+}
+
+progress::-moz-progress-bar {
+    background-color: #1d4ed8;
+}
+
+/* --- Micro-Timeline List Group --- */
+.activity-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.activity-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.activity-icon-box {
+    width: 32px;
+    height: 32px;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.activity-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    font-size: 0.84rem;
+}
+
+.activity-text {
+    color: #475569;
+}
+
+.activity-text strong {
+    color: #1e293b;
+}
+
+.activity-time {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+/* --- Inline Grid Table Component --- */
+.table-responsive { width: 100%; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    text-align: left;
+}
+
+th {
+    color: #64748b;
+    font-weight: 500;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+td {
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+tr:last-child td { border-bottom: none; }
+
+.dark-text { color: #334155; }
+.font-semibold { font-weight: 600; }
+.slate-text { color: #64748b; font-size: 0.8rem; }
+.view-all-link { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; text-decoration: none; }
+
+/* Table Component Micro Badges */
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.badge-running { background-color: #ecfdf5; color: #065f46; }
+.badge-maintenance { background-color: #eff6ff; color: #1e40af; }
+
+/* --- Chart Canvas Shell Container --- */
+.chart-box {
+    position: relative;
+    width: 100%;
+    height: 160px;
+}

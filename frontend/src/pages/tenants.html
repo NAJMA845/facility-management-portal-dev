@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Tenants</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Tenants & Maintenance Requests</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                <div class="card data-management-card">
+                    <div class="table-control-header-row">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="Search maintenance requests..." class="search-bar-field" id="searchInput">
+                            <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                        </div>
+                        <button class="primary-action-btn" id="addRequestBtn"><i class="fa-solid fa-plus"></i> New Request</button>
+                    </div>
+
+                    <div class="filter-bar" id="filterBar">
+                        <button class="filter-badge active" data-filter="all">All</button>
+                        <button class="filter-badge" data-filter="Pending">Pending</button>
+                        <button class="filter-badge" data-filter="In Progress">In Progress</button>
+                        <button class="filter-badge" data-filter="Completed">Completed</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="management-grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tenant Name</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th>Email</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tenantsTableBody">
+                                <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Tenant Request Modal -->
+    <div id="tenantModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">New Maintenance Request</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="tenantForm">
+                    <div class="form-group">
+                        <label for="tenantName">Tenant Name *</label>
+                        <input type="text" id="tenantName" name="tenant_name" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenantEmail">Email *</label>
+                        <input type="email" id="tenantEmail" name="tenant_email" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenantSubject">Subject *</label>
+                        <input type="text" id="tenantSubject" name="subject" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenantDescription">Description *</label>
+                        <textarea id="tenantDescription" name="description" required></textarea>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group" id="statusGroup" style="display:none;">
+                        <label for="tenantStatus">Status</label>
+                        <select id="tenantStatus" name="status">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-submit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/tenants-page.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+</body>
+</html>

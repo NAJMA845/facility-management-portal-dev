@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Manager Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/src/css/manager-dashboard.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+
+        <main class="main-content">
+            
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">Manager User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                
+                <section class="metrics-row">
+                    <div class="card metric-card">
+                        <span class="card-label">Assigned Work Orders</span>
+                        <div class="metric-value">85</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">In Progress Tasks</span>
+                        <div class="metric-value">35</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">Completed Tasks</span>
+                        <div class="metric-value">50</div>
+                    </div>
+                    <div class="card metric-card">
+                        <span class="card-label">Team Members</span>
+                        <div class="metric-value">12</div>
+                    </div>
+                </section>
+
+                <section class="split-row">
+                    <div class="card complex-card">
+                        <h3 class="card-title mb-20">Tasks Progress</h3>
+                        <div class="progress-list">
+                            <div class="progress-item-block">
+                                <div class="progress-labels">
+                                    <span class="progress-name">AC Repair</span>
+                                    <span class="progress-percentage">70%</span>
+                                </div>
+                                <progress value="70" max="100"></progress>
+                            </div>
+                            <div class="progress-item-block">
+                                <div class="progress-labels">
+                                    <span class="progress-name">Plumbing Issue</span>
+                                    <span class="progress-percentage">40%</span>
+                                </div>
+                                <progress value="40" max="100"></progress>
+                            </div>
+                            <div class="progress-item-block">
+                                <div class="progress-labels">
+                                    <span class="progress-name">Lighting Fix</span>
+                                    <span class="progress-percentage">90%</span>
+                                </div>
+                                <progress value="90" max="100"></progress>
+                            </div>
+                            <div class="progress-item-block">
+                                <div class="progress-labels">
+                                    <span class="progress-name">Generator Check</span>
+                                    <span class="progress-percentage">60%</span>
+                                </div>
+                                <progress value="60" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card complex-card">
+                        <h3 class="card-title mb-20">Recent Activities</h3>
+                        <div class="activity-timeline">
+                            <div class="activity-row">
+                                <div class="activity-icon-box"><i class="fa-regular fa-file-lines"></i></div>
+                                <div class="activity-details">
+                                    <p class="activity-text">Work order <strong>WO-1001</strong> updated</p>
+                                    <span class="activity-time">2 mins ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-icon-box"><i class="fa-regular fa-file-lines"></i></div>
+                                <div class="activity-details">
+                                    <p class="activity-text">New work order <strong>WO-1005</strong> created</p>
+                                    <span class="activity-time">15 mins ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-icon-box"><i class="fa-regular fa-circle-check"></i></div>
+                                <div class="activity-details">
+                                    <p class="activity-text">Task completed for <strong>WO-1003</strong></p>
+                                    <span class="activity-time">1 hour ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div class="activity-details">
+                                    <p class="activity-text">Asset <strong>AS-2001</strong> maintenance due</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="split-row">
+                    <div class="card complex-card">
+                        <div class="card-header-inline">
+                            <h3 class="card-title">Machine Monitoring</h3>
+                            <a href="/src/pages/machines.html" class="view-all-link">View All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Machine Name</th>
+                                        <th>Status</th>
+                                        <th>Last Checked</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="dark-text font-semibold">Generator</td>
+                                        <td><span class="badge badge-running">Running</span></td>
+                                        <td class="slate-text">May 23, 2026 10:00 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="dark-text font-semibold">HVAC Unit</td>
+                                        <td><span class="badge badge-maintenance">Maintenance</span></td>
+                                        <td class="slate-text">May 23, 2026 09:30 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="dark-text font-semibold">Water Pump</td>
+                                        <td><span class="badge badge-running">Running</span></td>
+                                        <td class="slate-text">May 23, 2026 09:00 AM</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card complex-card">
+                        <h3 class="card-title mb-12">Team Performance</h3>
+                        <div class="chart-box">
+                            <canvas id="teamPerformanceChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+    <script src="/src/js/manager-dashboard.js"></script>
+</body>
+</html>

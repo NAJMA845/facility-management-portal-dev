@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Assets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <main class="main-content">
+            
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">User Management</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                
+                <div class="card data-management-card">
+                    
+                    <div class="table-control-header-row">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="Search users..." class="search-bar-field">
+                            <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                        </div>
+                        <button class="primary-action-btn"><i class="fa-solid fa-plus"></i> Add User</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="management-grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <footer class="pagination-wrapper">
+                        <div class="pagination-strip">
+                            <button class="page-link-btn direction-control">Previous</button>
+                            <button class="page-link-btn numeric-index active">1</button>
+                            <button class="page-link-btn numeric-index">2</button>
+                            <button class="page-link-btn direction-control">Next</button>
+                        </div>
+                    </footer>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="userModalTitle">Add User</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Name *</label>
+                        <input type="text" id="userName" name="name" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email *</label>
+                        <input type="email" id="userEmail" name="email" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword" id="userPasswordLabel">Password *</label>
+                        <input type="password" id="userPassword" name="password" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Role *</label>
+                        <select id="userRole" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="technician">Technician</option>
+                            <option value="user">User</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-submit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+    <script src="/src/js/user-management.js"></script>
+</body>
+</html>

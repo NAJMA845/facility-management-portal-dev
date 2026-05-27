@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Assets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">Assets</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                <div class="card data-management-card">
+                    <div class="table-control-header-row">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="Search assets..." class="search-bar-field" id="searchInput">
+                            <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                        </div>
+                        <button class="primary-action-btn" id="addAssetBtn"><i class="fa-solid fa-plus"></i> Add Asset</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="management-grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Asset Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="assetsTableBody">
+                                <tr><td colspan="6" class="empty-state">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Asset Modal -->
+    <div id="assetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add Asset</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="assetForm">
+                    <div class="form-group">
+                        <label for="assetName">Asset Name *</label>
+                        <input type="text" id="assetName" name="name" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetType">Type</label>
+                        <input type="text" id="assetType" name="type" placeholder="e.g., HVAC, Electrical, Plumbing">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetLocation">Location</label>
+                        <input type="text" id="assetLocation" name="location" placeholder="e.g., Building A, Floor 3">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetPurchaseDate">Purchase Date</label>
+                        <input type="date" id="assetPurchaseDate" name="purchase_date">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetWarrantyEnd">Warranty End Date</label>
+                        <input type="date" id="assetWarrantyEnd" name="warranty_end">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetStatus">Status</label>
+                        <select id="assetStatus" name="status">
+                            <option value="Active">Active</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Retired">Retired</option>
+                        </select>
+                        <div class="form-error"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-submit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/assets-page.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+</body>
+</html>

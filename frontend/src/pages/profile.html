@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Pro - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/assets.css">
+    <link rel="stylesheet" href="/src/css/sidebar-shell.css">
+    <link rel="stylesheet" href="/src/css/modals.css">
+    <style>
+        .profile-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .profile-info h2 {
+            margin: 0 0 4px 0;
+            font-size: 1.5rem;
+        }
+        .profile-info p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .profile-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .profile-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .field-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+        .field-value {
+            color: #64748b;
+            padding: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header class="top-navbar">
+                <div class="header-left">
+                    <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="page-title">My Profile</h1>
+                </div>
+                <div class="header-right">
+                    <button class="icon-notification-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="icon-notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="user-profile">
+                        <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-viewport">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="profile-info">
+                            <h2 id="profileName">Loading...</h2>
+                            <p id="profileRole">User</p>
+                            <p id="profileEmail">Loading...</p>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <button class="primary-action-btn" id="editProfileBtn"><i class="fa-solid fa-pencil"></i> Edit Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-fields" id="profileFields">
+                        <div class="field-group">
+                            <div class="field-label">Email</div>
+                            <div class="field-value" id="fieldEmail">Loading...</div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">Role</div>
+                            <div class="field-value" id="fieldRole">Loading...</div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">Department</div>
+                            <div class="field-value" id="fieldDepartment">N/A</div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">Phone</div>
+                            <div class="field-value" id="fieldPhone">N/A</div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">Bio</div>
+                            <div class="field-value" id="fieldBio">N/A</div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">Member Since</div>
+                            <div class="field-value" id="fieldCreated">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Profile</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="profileNameInput">Full Name</label>
+                        <input type="text" id="profileNameInput" name="name" required>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileDepartmentInput">Department</label>
+                        <input type="text" id="profileDepartmentInput" name="department" placeholder="e.g., Maintenance, Admin">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePhoneInput">Phone</label>
+                        <input type="tel" id="profilePhoneInput" name="phone" placeholder="Your phone number">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBioInput">Bio</label>
+                        <textarea id="profileBioInput" name="bio" placeholder="Tell us about yourself"></textarea>
+                        <div class="form-error"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-submit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/api.js"></script>
+    <script src="/src/js/utils.js"></script>
+    <script src="/src/js/profile-page.js"></script>
+    <script src="/src/js/auth-guard.js"></script>
+    <script src="/src/js/navigation.js"></script>
+</body>
+</html>
